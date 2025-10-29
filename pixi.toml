@@ -1,0 +1,80 @@
+[workspace]
+channels = [
+    "https://prefix.dev/pixi-build-backends",
+    "https://prefix.dev/conda-forge",
+]
+platforms = ["linux-64", "linux-aarch64", "osx-arm64", "osx-64"]
+preview = ["pixi-build"]
+
+##############################################
+# Project-wide (always-present) deps
+##############################################
+[dependencies]
+python = ">=3.12.0,<3.14"
+# monorepo packages
+foopack-core = { path = "packages/core" }
+foopack-extras = { path = "packages/extras" }
+foopack-ui = { path = "packages/ui" }
+
+##############################################
+# Feature: dev  ( QA & tests)
+##############################################
+[feature.dev.dependencies]
+pytest = "*"
+pytest-xdist = "*"
+pytest-cov = "*"
+
+[feature.dev.tasks]
+# Per-package test runs (parallel with coverage)
+test-core = { cmd = "pytest -n auto --cov=foopack_core   --cov-report=term-missing packages/core", cwd = "." }
+test-extras = { cmd = "pytest -n auto --cov=foopack_extras --cov-report=term-missing packages/extras", cwd = "." }
+test-ui = { cmd = "pytest -n auto --cov=foopack_ui     --cov-report=term-missing packages/ui", cwd = "." }
+
+# Aggregate
+test-all = { depends-on = ["test-core", "test-extras", "test-ui"] }
+
+##############################################
+# Global tasks
+##############################################
+[tasks]
+# ---- smoke import/version check (quick sanity) ----
+versions = '''
+bash -lc '
+set -euo pipefail
+python - <<'PY'
+import foopack_core as core
+import foopack_extras as extras
+import foopack_ui as ui
+print("foopack-core   ::", getattr(core,  "__version__", "n/a"))
+print("foopack-extras ::", getattr(extras,"__version__", "n/a"))
+print("foopack-ui     ::", getattr(ui,    "__version__", "n/a"))
+print("imports OK")
+PY
+'
+'''
+
+# ---- builds (current platform) ----
+build-core = { cmd = "pixi build -vv -o ../../output", cwd = "packages/core" }
+build-extras = { cmd = "pixi build -vv -o ../../output", cwd = "packages/extras" }
+build-ui = { cmd = "pixi build -vv -o ../../output", cwd = "packages/ui" }
+build-all = { depends-on = ["build-core", "build-extras", "build-ui"] }
+
+# ---- downstream app ----
+dashboard = { cmd = "panel serve src/myapp/dashboard.py --show --autoreload", cwd = "app", env = { PYTHONPATH = "src" } }
+
+# ---- optional: per-platform builds ----
+# build-core-amd64   = { cmd = "pixi build -vv --target-platform linux-64      --output-dir ../../output/linux-64",      cwd = "packages/core" }
+# build-core-arm64   = { cmd = "pixi build -vv --target-platform linux-aarch64 --output-dir ../../output/linux-aarch64", cwd = "packages/core" }
+# build-extras-amd64 = { cmd = "pixi build -vv --target-platform linux-64      --output-dir ../../output/linux-64",      cwd = "packages/extras" }
+# build-extras-arm64 = { cmd = "pixi build -vv --target-platform linux-aarch64 --output-dir ../../output/linux-aarch64", cwd = "packages/extras" }
+# build-ui-amd64     = { cmd = "pixi build -vv --target-platform linux-64      --output-dir ../../output/linux-64",      cwd = "packages/ui" }
+# build-ui-arm64     = { cmd = "pixi build -vv --target-platform linux-aarch64 --output-dir ../../output/linux-aarch64", cwd = "packages/ui" }
+# build-all-amd64 = { depends-on = ["build-core-amd64", "build-extras-amd64", "build-ui-amd64"] }
+# build-all-arm64 = { depends-on = ["build-core-arm64", "build-extras-arm64", "build-ui-arm64"] }
+
+##############################################
+# Environments
+##############################################
+[environments]
+dev = { features = ["default", "dev"], solve-group = "default" }
+prod = { features = ["default"], solve-group = "default" }

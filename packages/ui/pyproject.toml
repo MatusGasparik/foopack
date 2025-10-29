@@ -1,0 +1,32 @@
+[project]
+name = "foopack-ui"
+version = "0.1.0"
+description = "UI helpers for Foopack"
+requires-python = ">=3.10"
+dependencies = ["foopack-core==0.1.0", "panel>=1.4", "bokeh>=3.5"]
+
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::coverage.exceptions.CoverageWarning",
+]
+
+[tool.coverage.run]
+parallel = true
+concurrency = ["multiprocessing"]
+
+[tool.coverage.report]
+skip_empty = true
+exclude_also = [
+    "pragma: no cover",
+]
+
+[tool.coverage.paths]
+source = [
+    "src/",
+    "*/site-packages/",
+]
