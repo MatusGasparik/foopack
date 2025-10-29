@@ -20,6 +20,8 @@ jobs:
           pixi-version: v0.54.2
           cache: true
           log-level: vv
+      - name: Install rattler-build
+        run: pixi global install rattler-build
       - name: Build foopack-core
         working-directory: packages/core
         run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
