@@ -34,9 +34,10 @@ jobs:
       - name: Upload to prefix.dev
         if: startsWith(github.ref, 'refs/tags/v')
         env:
-          PREFIX_CHANNEL: \${{ env.PREFIX_CHANNEL }}
+          PREFIX_CHANNEL: \${{ secrets.PREFIX_CHANNEL || 'foopack' }}
         run: |
-          for f in \${OUTDIR}/*.conda; do
-            echo "Uploading \$f"
-            rattler-build upload prefix --channel "\$PREFIX_CHANNEL" "\$f"
+          shopt -s globstar || true
+          for f in "$GITHUB_WORKSPACE"/output/**/*.conda; do
+            echo "Uploading $f"
+            rattler-build upload prefix --channel "$PREFIX_CHANNEL" "$f"
           done
