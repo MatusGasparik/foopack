@@ -1,6 +1,6 @@
 [package]
 name = "foopack-ui"
-version = "0.1.1"
+version = "0.1.2"
 
 [package.build]
 backend = { name = "pixi-build-python", version = "*" }
@@ -11,6 +11,6 @@ hatchling = ">=1.27,<2.0"
 uv = "*"
 
 [package.run-dependencies]
-foopack-core = "==0.1.1"
+foopack-core = "==0.1.2"
 panel = ">=1.4,<2"
 bokeh = ">=3.5,<4"
