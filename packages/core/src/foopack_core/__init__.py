@@ -1,5 +1,11 @@
+from importlib.metadata import PackageNotFoundError, version
+
 __all__ = ["hello"]
-__version__ = "0.1.0"
+
+try:
+    __version__ = version("foopack-core")
+except PackageNotFoundError:
+    __version__ = "unknown"
 
 
 def hello():

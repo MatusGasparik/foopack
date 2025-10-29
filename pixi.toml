@@ -80,9 +80,6 @@ build-extras = { cmd = "pixi build -vv -o ../../output", cwd = "packages/extras"
 build-ui = { cmd = "pixi build -vv -o ../../output", cwd = "packages/ui" }
 build-all = { depends-on = ["build-core", "build-extras", "build-ui"] }
 
-# ---- downstream app ----
-dashboard = { cmd = "panel serve src/myapp/dashboard.py --show --autoreload", cwd = "app", env = { PYTHONPATH = "src" } }
-
 # ---- optional: per-platform builds ----
 # build-core-amd64   = { cmd = "pixi build -vv --target-platform linux-64      --output-dir ../../output/linux-64",      cwd = "packages/core" }
 # build-core-arm64   = { cmd = "pixi build -vv --target-platform linux-aarch64 --output-dir ../../output/linux-aarch64", cwd = "packages/core" }
