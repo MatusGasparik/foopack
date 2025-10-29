@@ -1,0 +1,69 @@
+# Ruff configuration for foopack monorepo
+# https://docs.astral.sh/ruff/configuration/
+
+# Target Python 3.10+ (minimum version for foopack packages)
+target-version = "py310"
+
+# Line length
+line-length = 100
+
+# Indentation
+indent-width = 4
+
+[lint]
+# Enable common linting rules
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # Pyflakes
+    "I",    # isort (import sorting)
+    "N",    # pep8-naming
+    "UP",   # pyupgrade (modernize Python code)
+    "B",    # flake8-bugbear (find likely bugs)
+    "C4",   # flake8-comprehensions
+    "SIM",  # flake8-simplify
+    "RUF",  # Ruff-specific rules
+]
+
+# Ignore specific rules that are too strict for this project
+ignore = [
+    "E501",   # Line too long (handled by formatter)
+    "B008",   # Do not perform function call in argument defaults
+    "SIM108", # Use ternary operator instead of if-else
+]
+
+# Allow autofix for all enabled rules
+fixable = ["ALL"]
+unfixable = []
+
+# Exclude common directories
+exclude = [
+    ".git",
+    ".pixi",
+    ".pytest_cache",
+    "__pycache__",
+    "*.egg-info",
+    "build",
+    "dist",
+    "output",
+]
+
+[lint.per-file-ignores]
+# Ignore import order in __init__.py files
+"__init__.py" = ["F401", "F403"]
+# Ignore unused imports in test files
+"test_*.py" = ["F401"]
+
+[format]
+# Use double quotes for strings
+quote-style = "double"
+
+# Indent with spaces
+indent-style = "space"
+
+# Respect magic trailing commas
+skip-magic-trailing-comma = false
+
+# Format docstrings
+docstring-code-format = true
+docstring-code-line-length = 88

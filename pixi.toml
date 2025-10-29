@@ -23,6 +23,7 @@ foopack-ui = { path = "packages/ui" }
 pytest = "*"
 pytest-xdist = "*"
 pytest-cov = "*"
+ruff = "*"
 
 [feature.dev.tasks]
 # Per-package test runs (parallel with coverage)
@@ -32,6 +33,22 @@ test-ui = { cmd = "pytest -n auto --cov=foopack_ui     --cov-report=term-missing
 
 # Aggregate
 test-all = { depends-on = ["test-core", "test-extras", "test-ui"] }
+
+# Linting (per-package)
+lint-core = { cmd = "ruff check .", cwd = "packages/core" }
+lint-extras = { cmd = "ruff check .", cwd = "packages/extras" }
+lint-ui = { cmd = "ruff check .", cwd = "packages/ui" }
+lint-app = { cmd = "ruff check .", cwd = "app" }
+
+# Formatting (per-package)
+fmt-core = { cmd = "ruff format .", cwd = "packages/core" }
+fmt-extras = { cmd = "ruff format .", cwd = "packages/extras" }
+fmt-ui = { cmd = "ruff format .", cwd = "packages/ui" }
+fmt-app = { cmd = "ruff format .", cwd = "app" }
+
+# Aggregate
+lint = { depends-on = ["lint-core", "lint-extras", "lint-ui", "lint-app"] }
+fmt = { depends-on = ["fmt-core", "fmt-extras", "fmt-ui", "fmt-app"] }
 
 ##############################################
 # Global tasks

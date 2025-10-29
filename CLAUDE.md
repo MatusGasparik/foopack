@@ -270,3 +270,4 @@ All packages are currently at version `0.1.0`. When bumping versions:
 5. The Release workflow will automatically build and publish packages to prefix.dev
 
 **Note:** Version bumps trigger the entire deployment pipeline, so coordinate changes across all three packages when publishing new releases.
+- use `ruff` and the "lint" and "fmt" `pixi` tasks with some sane defaults. Store in `.ruff.toml` or whatever is typically used

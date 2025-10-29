@@ -93,7 +93,9 @@ def main() -> int:
 
         for result in results:
             status_emoji = "✓" if result["status"] == "OK" else "✗"
-            print(f"{status_emoji} {result['package']:20} v{result['version']:10} [{result['status']}]")
+            print(
+                f"{status_emoji} {result['package']:20} v{result['version']:10} [{result['status']}]"
+            )
 
         print("\n✓ All foopack packages successfully installed and imported!")
         print("✓ Multi-platform build verification: PASSED")
@@ -103,6 +105,7 @@ def main() -> int:
     except Exception as e:
         print(f"\n✗ Error: {e}", file=sys.stderr)
         import traceback
+
         traceback.print_exc()
         return 1
 

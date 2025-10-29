@@ -45,12 +45,14 @@ def get_package_info() -> list[dict[str, str]]:
     for pkg_name, description in packages:
         pkg_version = get_package_version(pkg_name)
         status = "✓" if pkg_version != "Not installed" else "✗"
-        package_data.append({
-            "Status": status,
-            "Package": pkg_name,
-            "Version": pkg_version,
-            "Description": description,
-        })
+        package_data.append(
+            {
+                "Status": status,
+                "Package": pkg_name,
+                "Version": pkg_version,
+                "Description": description,
+            }
+        )
 
     return package_data
 
@@ -74,56 +76,71 @@ def test_imports() -> list[dict[str, str]]:
     # Test foopack-core
     try:
         import foopack_core
+
         result = foopack_core.hello()
-        results.append({
-            "Package": "foopack-core",
-            "Test": "Import & call hello()",
-            "Result": "✓ Success",
-            "Output": result,
-        })
+        results.append(
+            {
+                "Package": "foopack-core",
+                "Test": "Import & call hello()",
+                "Result": "✓ Success",
+                "Output": result,
+            }
+        )
     except Exception as e:
-        results.append({
-            "Package": "foopack-core",
-            "Test": "Import & call hello()",
-            "Result": "✗ Failed",
-            "Output": str(e),
-        })
+        results.append(
+            {
+                "Package": "foopack-core",
+                "Test": "Import & call hello()",
+                "Result": "✗ Failed",
+                "Output": str(e),
+            }
+        )
 
     # Test foopack-extras
     try:
         import foopack_extras
+
         result = foopack_extras.hello_extras()
-        results.append({
-            "Package": "foopack-extras",
-            "Test": "Import & call hello_extras()",
-            "Result": "✓ Success",
-            "Output": result,
-        })
+        results.append(
+            {
+                "Package": "foopack-extras",
+                "Test": "Import & call hello_extras()",
+                "Result": "✓ Success",
+                "Output": result,
+            }
+        )
     except Exception as e:
-        results.append({
-            "Package": "foopack-extras",
-            "Test": "Import & call hello_extras()",
-            "Result": "✗ Failed",
-            "Output": str(e),
-        })
+        results.append(
+            {
+                "Package": "foopack-extras",
+                "Test": "Import & call hello_extras()",
+                "Result": "✗ Failed",
+                "Output": str(e),
+            }
+        )
 
     # Test foopack-ui
     try:
         import foopack_ui
+
         result = foopack_ui.hello_ui()
-        results.append({
-            "Package": "foopack-ui",
-            "Test": "Import & call hello_ui()",
-            "Result": "✓ Success",
-            "Output": result,
-        })
+        results.append(
+            {
+                "Package": "foopack-ui",
+                "Test": "Import & call hello_ui()",
+                "Result": "✓ Success",
+                "Output": result,
+            }
+        )
     except Exception as e:
-        results.append({
-            "Package": "foopack-ui",
-            "Test": "Import & call hello_ui()",
-            "Result": "✗ Failed",
-            "Output": str(e),
-        })
+        results.append(
+            {
+                "Package": "foopack-ui",
+                "Test": "Import & call hello_ui()",
+                "Result": "✗ Failed",
+                "Output": str(e),
+            }
+        )
 
     return results
 
@@ -235,10 +252,12 @@ def create_dashboard():
 # Create and serve the dashboard
 dashboard = create_dashboard()
 
+
 # For serving with panel serve
 def view():
     """Entry point for panel serve."""
     return dashboard
+
 
 if __name__ == "__main__":
     # For running with python -m
