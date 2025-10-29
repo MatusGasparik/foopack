@@ -32,7 +32,7 @@ test-extras = { cmd = "pytest -n auto --cov=foopack_extras --cov-report=term-mis
 test-ui = { cmd = "pytest -n auto --cov=foopack_ui     --cov-report=term-missing packages/ui", cwd = "." }
 
 # Aggregate
-test-all = { depends-on = ["test-core", "test-extras", "test-ui"] }
+test = { depends-on = ["test-core", "test-extras", "test-ui"] }
 
 # Linting (per-package)
 lint-core = { cmd = "ruff check .", cwd = "packages/core" }
@@ -50,6 +50,10 @@ fmt-app = { cmd = "ruff format .", cwd = "app" }
 lint = { depends-on = ["lint-core", "lint-extras", "lint-ui", "lint-app"] }
 fmt = { depends-on = ["fmt-core", "fmt-extras", "fmt-ui", "fmt-app"] }
 
+qa-core = { depends-on = ["lint-core", "fmt-core", "test-core"] }
+qa-extras = { depends-on = ["lint-extras", "fmt-extras", "test-extras"] }
+qa-ui = { depends-on = ["lint-ui", "fmt-ui", "test-ui"] }
+qa-all = { depends-on = ["qa-core", "qa-extras", "qa-ui"] }
 ##############################################
 # Global tasks
 ##############################################
