@@ -21,6 +21,62 @@ Foopack is a Python monorepo consisting of three packages managed with Pixi:
 
 All packages use `pixi-build-python` backend with `hatchling` for building. Packages are configured as `noarch` (pure Python).
 
+## Architecture & Responsibilities
+
+**IMPORTANT**: This project follows a **separation of concerns** pattern where package building and application deployment are independent responsibilities.
+
+### foopack Repository Responsibilities
+This repository is responsible for:
+- ✅ Building conda packages (foopack-core, foopack-extras, foopack-ui)
+- ✅ Publishing packages to prefix.dev with semantic versioning
+- ✅ Testing packages work correctly
+- ✅ Maintaining package compatibility and dependencies
+- ❌ **NOT** responsible for building application Docker images
+- ❌ **NOT** responsible for deploying applications to VMs
+
+### Downstream Application Responsibilities
+Applications consuming foopack packages (like `app/` in this repo) are responsible for:
+- ✅ Declaring dependencies on specific foopack versions via `pixi.toml`
+- ✅ Building Docker images that include:
+  - Installed foopack packages from prefix.dev
+  - Application code (dashboard, services, etc.)
+- ✅ Pushing Docker images to ghcr.io
+- ✅ Deploying containers to VMs
+- ❌ **NOT** responsible for building foopack packages
+
+### Why This Separation?
+
+**Reusability**: Foopack packages are designed to be reused across multiple projects, not just this dashboard. Each downstream project can:
+- Pin to specific versions (e.g., `foopack-core==0.2.0`)
+- Upgrade independently
+- Use only needed packages (not all three)
+
+**Clean CI/CD Pipeline**:
+```
+foopack CI:  code changes → tests → build packages → prefix.dev
+                                                         ↓
+App CI:                                    install packages → add app code → Docker → ghcr.io → VM
+```
+
+**Deployment Target**: Docker containers deployed to VMs. Applications run as containers that pull from ghcr.io.
+
+**Version Management**: Downstream apps control which foopack version to use, enabling:
+- Gradual rollouts of new package versions
+- Independent testing of package updates
+- Rollback capability per application
+
+### Testing Strategy
+
+**Before Publishing to prefix.dev**:
+- Run tests locally: `pixi run test-all`
+- Build packages locally: `pixi run build-all` → `./output/`
+- Test packages work in isolation
+
+**After Publishing to prefix.dev**:
+- Downstream apps update `pixi.toml` to new version
+- Build Docker images: packages installed from prefix.dev
+- Deploy to staging VMs, then production
+
 ## Package Management & Build System
 
 This project uses **Pixi** (not pip/conda directly) for all package management and task execution. The monorepo workspace is defined in the root `pixi.toml`.
