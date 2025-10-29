@@ -1541,7 +1541,7 @@ packages:
   timestamp: 1733231086305
 - conda: packages/core
   name: foopack-core
-  version: 0.1.4
+  version: 0.1.5
   build: pyh4616a5c_0
   subdir: noarch
   depends:
@@ -1550,36 +1550,36 @@ packages:
   - python >=3.10
   - python *
   input:
-    hash: 821a2ffb7f9030bf765d25ce98db091595700c1281163b50dbc2e5559788b1c3
+    hash: b92d57309ee4156e9030fe1e41c510d7f794b7ae8a523313f32c00bcaea22e09
     globs:
     - pyproject.toml
 - conda: packages/extras
   name: foopack-extras
-  version: 0.1.4
+  version: 0.1.5
   build: pyh4616a5c_0
   subdir: noarch
   depends:
-  - foopack-core ==0.1.4
+  - foopack-core ==0.1.5
   - pandas >=2.2,<3
   - python >=3.10
   - python *
   input:
-    hash: 5b771df11b37c49ce3cb0de6cdd747aa9da61668d79f441ed868d150e7a613a1
+    hash: e8faa6a164dcb45c0ca96a014c2fa28472718216987179f1e485222e1930652d
     globs:
     - pyproject.toml
 - conda: packages/ui
   name: foopack-ui
-  version: 0.1.4
+  version: 0.1.5
   build: pyh4616a5c_0
   subdir: noarch
   depends:
-  - foopack-core ==0.1.4
+  - foopack-core ==0.1.5
   - panel >=1.4,<2
   - bokeh >=3.5,<4
   - python >=3.10
   - python *
   input:
-    hash: 10db521314c12432900f998828fca0c223bb066fa95c04aff0f94a12cbdfcda1
+    hash: e02be0e04d5f9c43b6ff763c086687c619aaa79c536c7b48fa73c31ce8f68dec
     globs:
     - pyproject.toml
 - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
