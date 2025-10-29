@@ -38,25 +38,46 @@ The dashboard runs on `http://localhost:5006` by default and auto-reloads on cod
 
 ## Docker Deployment
 
-### Build single-platform image
+### Build multi-platform image locally
+
+Build for both linux/amd64 (Linux VMs) and linux/arm64 (macOS ARM64):
 
 ```bash
-docker build -t myapp:latest .
-docker run --rm myapp:latest
-```
+# Using pixi task
+pixi run docker-build
 
-### Build multi-platform image
-
-```bash
-# Create buildx builder (first time only)
-docker buildx create --name multiplatform --use
-
-# Build for multiple architectures
+# Or directly with docker
 docker buildx build \
   --platform linux/amd64,linux/arm64 \
-  -t myapp:latest \
-  --load \
+  -t ghcr.io/matusgasparik/foopack-app:latest \
   .
+```
+
+### Push to GitHub Container Registry
+
+Build and push the multi-platform image to ghcr.io:
+
+```bash
+# First, authenticate with GitHub Container Registry
+echo $GITHUB_TOKEN | docker login ghcr.io -u MatusGasparik --password-stdin
+
+# Build and push using pixi task
+pixi run docker-push
+
+# Or directly with docker
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t ghcr.io/matusgasparik/foopack-app:latest \
+  --push \
+  .
+```
+
+### Run the container
+
+Run the dashboard locally (accessible at http://localhost:5006):
+
+```bash
+docker run --rm -p 5006:5006 ghcr.io/matusgasparik/foopack-app:latest
 ```
 
 ## How it works

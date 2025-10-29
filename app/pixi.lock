@@ -18,9 +18,9 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/charset-normalizer-3.4.4-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/linux-64/contourpy-1.3.3-py313h7037e92_2.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.5-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.6-pyh4616a5c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.1.0-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.1.0-pyhd8ed1ab_0.conda
@@ -112,9 +112,9 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/charset-normalizer-3.4.4-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/linux-aarch64/contourpy-1.3.3-py313he6111f0_2.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.5-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.6-pyh4616a5c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.1.0-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.1.0-pyhd8ed1ab_0.conda
@@ -205,9 +205,9 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/charset-normalizer-3.4.4-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/osx-64/contourpy-1.3.3-py313hc551f4f_2.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.5-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.6-pyh4616a5c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.1.0-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.1.0-pyhd8ed1ab_0.conda
@@ -295,9 +295,9 @@ environments:
       - conda: https://prefix.dev/conda-forge/noarch/charset-normalizer-3.4.4-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/colorama-0.4.6-pyhd8ed1ab_1.conda
       - conda: https://prefix.dev/conda-forge/osx-arm64/contourpy-1.3.3-py313hc50a443_2.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.5-pyh4616a5c_0.conda
-      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.5-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.6-pyh4616a5c_0.conda
+      - conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.6-pyh4616a5c_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hpack-4.1.0-pyhd8ed1ab_0.conda
       - conda: https://prefix.dev/conda-forge/noarch/hyperframe-6.1.0-pyhd8ed1ab_0.conda
@@ -677,34 +677,34 @@ packages:
   license_family: BSD
   size: 260411
   timestamp: 1756545032560
-- conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.5-pyh4616a5c_0.conda
-  sha256: f620a9d0f1d238b7052e038f01dfa72c0829fe4a0fc12def5a5d61ecb7286041
+- conda: https://repo.prefix.dev/foopack/noarch/foopack-core-0.1.6-pyh4616a5c_0.conda
+  sha256: 1856b0a5c8175791076c07198ad168cd5fbddff33222ceb5dd7abf13fe95dd81
   depends:
   - numpy >=1.26,<3
   - xarray >=2024.6,<2026
   - python >=3.10
   - python *
-  size: 2733
-  timestamp: 1761752984371
-- conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.5-pyh4616a5c_0.conda
-  sha256: abdca364844a545dac93e6343b8e930691b7b0025c671faa5f3b5ba94a66c772
+  size: 2804
+  timestamp: 1761760290369
+- conda: https://repo.prefix.dev/foopack/noarch/foopack-extras-0.1.6-pyh4616a5c_0.conda
+  sha256: b093c674df6e6b796ec7073d3138aedbefd5daeb54813f633337e47a00a48e3d
   depends:
-  - foopack-core ==0.1.5
+  - foopack-core ==0.1.6
   - pandas >=2.2,<3
   - python >=3.10
   - python *
-  size: 2742
-  timestamp: 1761752985521
-- conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.5-pyh4616a5c_0.conda
-  sha256: 9a08870429a3a9ea30bcd174c1200b3e8a1a1f44c6d4b9cb94cdf67eccaf372e
+  size: 2824
+  timestamp: 1761760291179
+- conda: https://repo.prefix.dev/foopack/noarch/foopack-ui-0.1.6-pyh4616a5c_0.conda
+  sha256: 5edc649f536c9a112f355c09d9680bbea24c4e8b07f2be644e5773f4bc0db51c
   depends:
-  - foopack-core ==0.1.5
+  - foopack-core ==0.1.6
   - panel >=1.4,<2
   - bokeh >=3.5,<4
   - python >=3.10
   - python *
-  size: 2716
-  timestamp: 1761752986520
+  size: 2806
+  timestamp: 1761760292017
 - conda: https://prefix.dev/conda-forge/noarch/h2-4.3.0-pyhcf101f3_0.conda
   sha256: 84c64443368f84b600bfecc529a1194a3b14c3656ee2e832d15a20e0329b6da3
   md5: 164fc43f0b53b6e3a7bc7dce5e4f1dc9

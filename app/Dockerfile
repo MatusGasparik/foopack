@@ -17,7 +17,7 @@ RUN pixi install && \
 COPY src/ /app/src/
 
 # Set up Python path to include src directory
-ENV PYTHONPATH=/app/src:${PYTHONPATH}
+ENV PYTHONPATH=/app/src
 
 # Verify packages are installed correctly
 RUN pixi run python -c "import foopack_core, foopack_extras, foopack_ui; print('✓ All packages installed')"
