@@ -20,9 +20,15 @@ jobs:
           pixi-version: v0.54.2
           cache: true
           log-level: vv
-      - run: pixi build -vv --output-dir "\${OUTDIR}" -p packages/core
-      - run: pixi build -vv --output-dir "\${OUTDIR}" -p packages/extras
-      - run: pixi build -vv --output-dir "\${OUTDIR}" -p packages/ui
+      - name: Build foopack-core
+        working-directory: packages/core
+        run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
+      - name: Build foopack-extras
+        working-directory: packages/extras
+        run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
+      - name: Build foopack-ui
+        working-directory: packages/ui
+        run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
       - name: Upload to prefix.dev
         if: startsWith(github.ref, 'refs/tags/v')
         env:
