@@ -169,7 +169,10 @@ Runs QA tasks `qa-core`, `qa-extras`, `qa-ui` on every PR and push to main. Thes
 **Process:**
 1. Builds all three packages using `pixi build -vv` to `./output/`
 2. Uploads `.conda` artifacts to prefix.dev using `rattler-build upload`
-3. Requires secrets: `PREFIX_API_KEY`, `PREFIX_API_SECRET`, `PREFIX_CHANNEL`
+3. Uses OIDC authentication via GitHub Actions Trusted Publishers (no secrets required)
+
+**Authentication:**
+This repository is configured as a Trusted Publisher on prefix.dev for the "foopack" channel. The workflow uses OpenID Connect (OIDC) to authenticate automatically via GitHub's `id-token: write` permission. No API keys need to be configured in repository secrets.
 
 **Workflow:** Create a version tag → push tag → packages automatically published to prefix.dev → downstream Docker builds can consume them.
 
@@ -271,3 +274,4 @@ All packages are currently at version `0.1.0`. When bumping versions:
 
 **Note:** Version bumps trigger the entire deployment pipeline, so coordinate changes across all three packages when publishing new releases.
 - use `ruff` and the "lint" and "fmt" `pixi` tasks with some sane defaults. Store in `.ruff.toml` or whatever is typically used
+- I create a public channel at prefix.dev and added the remote repo to "Trusted Publishes". The channel is called "foopack". In the `pixi.toml` of the donwstream app the channel URL should be "https://repo.prefix.dev/foopack"

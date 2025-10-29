@@ -1,6 +1,6 @@
 [package]
 name = "foopack-extras"
-version = "0.1.0"
+version = "0.1.1"
 
 [package.build]
 backend = { name = "pixi-build-python", version = "*" }
@@ -11,5 +11,5 @@ hatchling = ">=1.27,<2.0"
 uv = "*"
 
 [package.run-dependencies]
-foopack-core = "==0.1.0"
+foopack-core = "==0.1.1"
 pandas = ">=2.2,<3"

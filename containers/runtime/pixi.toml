@@ -3,7 +3,7 @@ name = "foopack-runtime"
 version = "0.1.0"
 description = "Runtime container demonstrating foopack package installation"
 channels = [
-    "https://prefix.dev/foopack",
+    "https://repo.prefix.dev/foopack",
     "https://prefix.dev/conda-forge",
 ]
 platforms = ["linux-64", "linux-aarch64"]

@@ -26,11 +26,9 @@ jobs:
       - name: Upload to prefix.dev
         if: startsWith(github.ref, 'refs/tags/v')
         env:
-          PREFIX_API_KEY: \${{ secrets.PREFIX_API_KEY }}
-          PREFIX_API_SECRET: \${{ secrets.PREFIX_API_SECRET }}
           PREFIX_CHANNEL: \${{ env.PREFIX_CHANNEL }}
         run: |
           for f in \${OUTDIR}/*.conda; do
             echo "Uploading \$f"
-            rattler-build upload prefix --api-key "\$PREFIX_API_KEY" --api-secret "\$PREFIX_API_SECRET" --channel "\$PREFIX_CHANNEL" "\$f"
+            rattler-build upload prefix --channel "\$PREFIX_CHANNEL" "\$f"
           done
