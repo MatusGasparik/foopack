@@ -19,9 +19,13 @@ jobs:
         with:
           pixi-version: v0.54.2
           cache: true
+          locked: false
           log-level: vv
-      - name: Install rattler-build
-        run: pixi global install rattler-build
+      - name: Show tool versions
+        run: |
+          pixi --version
+          pixi global install rattler-build
+          rattler-build --version
       - name: Build foopack-core
         working-directory: packages/core
         run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
@@ -31,6 +35,10 @@ jobs:
       - name: Build foopack-ui
         working-directory: packages/ui
         run: pixi build -vv --output-dir "\$GITHUB_WORKSPACE/output"
+      - name: List built artifacts
+        run: |
+          echo "Contents of output directory:"
+          find "$GITHUB_WORKSPACE/output" -type f -name "*.conda" || echo "No .conda files found"
       - name: Upload to prefix.dev
         if: startsWith(github.ref, 'refs/tags/v')
         env:
